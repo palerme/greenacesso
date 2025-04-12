@@ -18,19 +18,21 @@ Este projeto é a solução do desafio técnico proposto pela Green Acesso para 
 ## 🚀 Como executar o projeto
 
 ### 1. Clone o repositório
+
 ```bash
-git clone https://github.com/seu-usuario/green-acesso-backend.git
-cd green-acesso-backend
+git clone https://github.com/palerme/greenacesso.git
+cd greenacesso
 ```
 
 ### 2. Instale as dependências
+
 ```bash
 npm install
 ```
 
 ### 3. Configure o `.env`
 
-Crie um arquivo `.env` na raiz do projeto e adicione:
+Crie um arquivo `.env` na raiz do projeto com base no `.env.example`. Exemplo:
 
 ```env
 TYPEORM_HOST=localhost
@@ -44,15 +46,18 @@ FILE_UPLOAD_PATH=./uploads
 > 💡 Você pode alterar `FILE_UPLOAD_PATH` para salvar os arquivos em qualquer diretório desejado.
 
 ### 4. Rode o projeto
+
 ```bash
 npm run start:dev
 ```
 
+A aplicação será iniciada em: `http://localhost:3000`
+
 ---
 
-## 📆 Funcionalidades implementadas
+## 📦 Funcionalidades implementadas
 
-### ▪ Atividade 1 – Upload CSV
+### ▪️ Atividade 1 – Upload CSV
 
 **Endpoint:** `POST /importacao/csv`
 
@@ -60,44 +65,55 @@ npm run start:dev
 - Mapeia `unidade` → `lotes.nome`
 - Salva os boletos com `id_lote` correto
 
-### ▪ Atividade 2 – Mapeamento de Unidade
+### ▪️ Atividade 2 – Mapeamento de Unidade
 
 - O CSV contém a coluna `unidade` (ex: `17`)
 - O sistema busca na tabela `lotes` por `nome = '0017'` para obter o `id` real do lote
 
-### ▪ Atividade 3 – Upload de PDF dos boletos
+### ▪️ Atividade 3 – Upload de PDF dos boletos
 
 **Endpoint:** `POST /importacao/pdf`
 
-- Recebe um PDF com várias páginas
-- Divide o PDF em arquivos individuais (1 por página)
+- Recebe um PDF com várias páginas (uma por boleto)
+- Divide o PDF em arquivos individuais
 - Salva os arquivos como:
-  - `boletos-pdf/1-marcia-carvalho.pdf`
-  - `boletos-pdf/2-jose-da-silva.pdf`
+  - `boletos-pdf/1-jose-da-silva.pdf`
+  - `boletos-pdf/2-marcos-roberto.pdf`
+  - `boletos-pdf/3-marcia-carvalho.pdf`
 
-### ▪ Atividade 4 – Listagem e filtros
+### ▪️ Atividade 4 – Listagem e filtros
 
 **Endpoint:** `GET /boletos`
 
-Com filtros opcionais:
-```http
+Parâmetros opcionais:
+
+```
 GET /boletos?nome=JOSE&id_lote=2&valor_inicial=100&valor_final=200
 ```
 
-### ▪ Atividade 5 – Geração de Relatório PDF
+- Filtros:
+  - `nome`: busca insensível a maiúsculas/minúsculas
+  - `valor_inicial` e `valor_final`
+  - `id_lote`
+
+### ▪️ Atividade 5 – Geração de relatório em PDF (base64)
 
 **Endpoint:** `GET /boletos?relatorio=1`
 
-- Retorna um objeto com o PDF do relatório dos boletos filtrados:
+- Retorna um PDF com os boletos filtrados (ou todos, se sem filtros)
+- Retorno:
+
 ```json
 {
   "base64": "JVBERi0xLjQKJ..."
 }
 ```
 
+Para visualizar, converta o base64 para arquivo `.pdf`.
+
 ---
 
-## 🗃️ Estrutura de pastas
+## 🗂 Estrutura de pastas
 
 ```
 src/
@@ -114,26 +130,21 @@ src/
 │   └── typeorm.config.ts
 ├── main.ts
 └── app.module.ts
+
+uploads/           # arquivos enviados (CSV e PDF originais)
+boletos-pdf/       # PDFs divididos por ID
 ```
 
 ---
 
-## 📓 Observações
+## 📌 Observações
 
-- O projeto **não precisa ser publicado**, apenas entregue via Git.
-- A estrutura do banco é criada automaticamente pelo TypeORM (`synchronize: true`).
-- A pasta de uploads e PDFs gerados pode ser configurada via `.env`.
-
----
-
-## 💡 Extras que poderiam ser implementados
-
-- Paginação nos boletos (`limit`, `offset`)
-- Download direto do PDF via `GET /boletos/relatorio.pdf`
-- Interface Web com upload e visualização dos arquivos
+- O banco de dados é criado automaticamente (`synchronize: true`)
+- Os arquivos são salvos no caminho definido por `FILE_UPLOAD_PATH`
+- O sistema usa PDFKit para gerar relatórios no formato base64
 
 ---
 
 ## ✨ Desenvolvido por
 
-João Guilherme — [linkedin.com/in/seu-usuario](https://linkedin.com/in/joaogfagundes)
+João Guilherme — [linkedin.com/in/joaogfagundes](https://linkedin.com/in/joaogfagundes)
