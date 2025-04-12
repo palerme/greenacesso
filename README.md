@@ -136,4 +136,4 @@ src/
 
 ## ✨ Desenvolvido por
 
-João Guilherme — [linkedin.com/in/seu-usuario](https://linkedin.com/in/joaogfagundes)
+João Guilherme — https://linkedin.com/in/joaogfagundes
