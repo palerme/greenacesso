@@ -1,0 +1,162 @@
+type: collection.insomnia.rest/5.0
+name: greenacesso
+meta:
+  id: wrk_332e226b0f3f4791b9a0900971d856df
+  created: 1744426768041
+  modified: 1744426768041
+collection:
+  - url: "{{ _.baseURL }}importacao/csv"
+    name: importar csv
+    meta:
+      id: req_45535da3d6a24e4ba5e7bde551c6a883
+      created: 1744426814255
+      modified: 1744426946342
+      isPrivate: false
+      sortKey: -1744426814255
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_a6968d143c424a288e0bf13beef37070
+          name: file
+          disabled: false
+          type: file
+          fileName: C:\Users\joaog\Downloads\teste.csv
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}importacao/pdf"
+    name: importar pdf
+    meta:
+      id: req_58be27d32418449abc33f28a8f0f1b33
+      created: 1744430345580
+      modified: 1744430794188
+      isPrivate: false
+      sortKey: -1744322939742
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_a6968d143c424a288e0bf13beef37070
+          name: file
+          disabled: false
+          type: file
+          fileName: C:\Users\joaog\Downloads\boletos.pdf
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}boletos?valor_inicial=100&valor_final=200&id_lote=7"
+    name: boletos valor_inicial
+    meta:
+      id: req_87566c647565416385e879c40404d7dc
+      created: 1744432065352
+      modified: 1744432192251
+      isPrivate: false
+      sortKey: -1744432065352
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}boletos"
+    name: boletos todos
+    meta:
+      id: req_90d4aea08b87425e94c78e2d8edddf2b
+      created: 1744432198477
+      modified: 1744432205431
+      isPrivate: false
+      sortKey: -1744429439803.5
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}boletos?nome=marcia"
+    name: boletos por nome
+    meta:
+      id: req_ccaffe286f2341d2871832d9c1eac41b
+      created: 1744432211047
+      modified: 1744432318217
+      isPrivate: false
+      sortKey: -1744428127029.25
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.baseURL }}boletos?relatorio=1"
+    name: boletos relatorio
+    meta:
+      id: req_3c514cf5dedd4cb1b5741cfb245b51cd
+      created: 1744432863297
+      modified: 1744432894048
+      isPrivate: false
+      sortKey: -1744430752577.75
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_4168f6bbd794ad4e82844e463a328502ff55282b
+    created: 1744426768049
+    modified: 1744426768049
+environments:
+  name: Base Environment
+  meta:
+    id: env_4168f6bbd794ad4e82844e463a328502ff55282b
+    created: 1744426768046
+    modified: 1744426913957
+    isPrivate: false
+  data:
+    baseURL: http://localhost:3000/
