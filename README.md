@@ -19,7 +19,7 @@ Este projeto é a solução do desafio técnico proposto pela Green Acesso para 
 
 ### 1. Clone o repositório
 ```bash
-git clone (https://github.com/palerme/greenacesso)
+git clone https://github.com/palerme/greenacesso
 cd green-acesso-backend
 ```
 
